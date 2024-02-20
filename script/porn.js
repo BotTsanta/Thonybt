@@ -8,12 +8,12 @@ module.exports.config = {
   name: "porn",
   aliases: ['redroom','xxl'],
   version: "1.5.8",
-  role: 0,
+  role: 1,
   credits: "Hazeyy",
   hasPrefix: true,
   description: "( 𝚁𝚎𝚍𝚛𝚘𝚘𝚖 2 )",
   usage: "( 𝚁𝚎𝚍𝚛𝚘𝚘𝚖 𝚏𝚘𝚛 𝚖𝚊𝚗𝚢𝚊𝚔 𝚘𝚗𝚕𝚢 )",
-  cooldown: 500,
+  cooldown: 5,
 };
 
 module.exports.handleEvent = async function ({ api, event }) {
