@@ -10,7 +10,7 @@ module.exports.config = {
   aliases: ["autoseen"],
   cooldown: 0,
   hasPrefix: true,
-  usage: "{pf} on/off",
+  usage: "vu on/off",
 };
 
 module.exports.handleEvent = async ({ api, event, args }) => {
@@ -25,12 +25,12 @@ module.exports. run = async ({ api, event, args }) => {
    try {
      if (args[0] == 'on') {
        fs.writeFileSync(pathFile, 'true');
-       api.sendMessage('🔴The autoseen function is now ENABLE  for new messages.', event.threadID, event.messageID);
+       api.sendMessage('✅ Vu automatique ACTIVÉ.', event.threadID, event.messageID);
      } else if (args[0] == 'off') {
        fs.writeFileSync(pathFile, 'false');
-       api.sendMessage('⚫The autoseen function has been DISABLED for new messages.', event.threadID, event.messageID);
+       api.sendMessage('❌ Vu automatique DÉSACTIVÉ', event.threadID, event.messageID);
      } else {
-       api.sendMessage('Incorrect syntax\n ▪︎Usage: vu on/off  ', event.threadID, event.messageID);
+       api.sendMessage('syntax auto_vue invalid\n\n ▪︎Usage: vu on/off  ', event.threadID, event.messageID);
      }
    }
    catch(e) {
