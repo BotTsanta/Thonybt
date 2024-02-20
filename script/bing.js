@@ -10,9 +10,9 @@ module.exports = {
     name: "bing",
     aliases: ["bing2"],
     version: "1.0.2",
-    role: 1,
+    role: 0,
     usePrefix: true,
-    countDown: 15,
+    countDown: 1000,
     shortDescription: {
       en: "dalle"
     },
@@ -67,7 +67,7 @@ module.exports = {
       }, event.threadID, event.messageID);
     } catch (error) {
       console.error(error);
-      api.sendMessage("cookie of the command. Is expired", event.threadID, event.messageID);
+      api.sendMessage("Oh no! Je suis malade...🥶 \n\n 💡Tuto: Bing + prompt\n ▪︎Ex: Bing Chicken cyborg", event.threadID, event.messageID);
     } finally {
       await fs.remove(path.join(__dirname, 'cache'));
     }
