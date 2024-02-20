@@ -6,7 +6,7 @@ module.exports.config = {
   name: 'Ai', //hercai
   version: '1.0.0',
   role: 0,
-  hasPrefix: false,
+  hasPrefix: true,
   description: "An AI command powered by TsantaBot",
   usage: "Tsanta [question]",
   credits: 'TsantaBot',
@@ -19,10 +19,10 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(` ▪︎Discutez avec Ai développé par TsantaBot. \n\n ▪︎Ex: Ai tu es là ? \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
+    api.sendMessage("▪︎Discutez avec Ai développé par TsantaBot.\n\n ▪︎Ex: Ai tu es là ? \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot", event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`✍ | Ai est en train d'écrire...`, event.threadID, event.messageID);
+  api.sendMessage("✍ | Ai est en train d'écrire...", event.threadID, event.messageID);
   try {
     const response = await herc.question({
       model: "v3",
