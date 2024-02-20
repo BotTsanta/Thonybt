@@ -1,43 +1,36 @@
-const axios = require('axios');
-
+const {
+  Hercai
+} = require('hercai');
+const herc = new Hercai();
 module.exports.config = {
-    name: "tsanta",
-    version: "1.0.0",
-    role: 0,
-    credits: "TsantaBot",//api by jonell
-    description: "Gpt architecture",
-    usePrefix: true,
-    Category: "GPT4",
-    cooldown: 10,
+  name: 'Tsanta', //hercai
+  aliases: ['gpt-4'],
+  version: '1.0.0',
+  role: 0,
+  hasPrefix: false,
+  description: "An AI command powered by TsantaBot Pro",
+  usage: "Tsanta [question]",
+  credits: 'TsantaBot',
+  cooldown: 10,
 };
-
-module.exports.run = async function ({ api, event, args }) {
-    try {
-        const { messageID, messageReply } = event;
-        let prompt = args.join(' ');
-
-        if (messageReply) {
-            const repliedMessage = messageReply.body;
-            prompt = `${repliedMessage} ${prompt}`;
-        }
-
-        if (!prompt) {
-            return api.sendMessage('💡TsantaBot : bit.ly/tsantabot \n━━━━━━━━━━━━━━\n➤ Info: Discutez avec Tsanta simple Ai.\n➤ Usage: Tsanta + question \n➤ Ex: Tsanta Tu es là?', event.threadID, messageID);
-        }
-
-        const gpt4_api = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${encodeURIComponent(prompt)}`;
-
-        const response = await axios.get(gpt4_api);
-
-        if (response.data && response.data.reply) {
-            const generatedText = response.data.reply;
-            api.sendMessage({ body: "TsantaBot :\n━━━━━\n" + generatedText, attachment: null }, event.threadID, messageID); // Added "Pretend: " to the generatedText
-        } else {
-            console.error('API response did not contain expected data:', response.data);
-            api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Error details: ${error.message}`, event.threadID, event.messageID);
-    }
+module.exports.run = async function({
+  api,
+  event,
+  args
+}) {
+  const input = args.join(' ');
+  if (!input) {
+    api.sendMessage(` ▪︎Discutez avec Ai Tsanta développé par TsantaBot. \n\n ▪︎Ex: Tsanta tu es là ? \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
+    return;
+  }
+  api.sendMessage(`✍ | Tsanta est en train d'écrire...`, event.threadID, event.messageID);
+  try {
+    const response = await herc.question({
+      model: "v3",
+      content: input
+    });
+    api.sendMessage(response.reply, event.threadID, event.messageID);
+  } catch (error) {
+    api.sendMessage('Oh non! Je suis malade 🤧 Je vais chez le docteur et après on peut continuer 😍', event.threadID, event.messageID);
+  }
 };
