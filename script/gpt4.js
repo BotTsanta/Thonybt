@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "GPT4",
+    name: "gpt4",
     version: "1.0.0",
     role: 1,
     credits: "KENLIEPLAYS",
