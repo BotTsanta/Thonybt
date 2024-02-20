@@ -8,11 +8,11 @@ const yts = require("yt-search");
 module.exports = {
   config: {
     name: "music",
-    aliases: ["hira","mp3","audio"],
+    aliases: [],
     version: "1.0",
-    role: 0,
+    role: 1,
     credits: "TsantaBot",
-    cooldown: 300,
+    cooldown: 30,
     shortdescription: "send YouTube music",
     longdescription: "",
     category: "audio",
