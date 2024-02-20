@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "dessin",
   version: "1.0.0",
-  role: 0,
+  role: 1,
   aliases: ["draw","dessiner"],
   hasPrefix: true,
   credits: "TsantaBot",
