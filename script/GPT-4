@@ -4,7 +4,7 @@ const {
 const herc = new Hercai();
 module.exports.config = {
   name: 'GPT4', //hercai
-  aliases: ['gpt-4']
+  aliases: ['gpt-4'],
   version: '1.0.0',
   role: 1,
   hasPrefix: true,
