@@ -8,11 +8,11 @@ const _U = "1m-9JS15f0PkyPsdvClShIHkJz0RDekyHci3C3S9A2HIKwfZGmZ9Qmat4lbqDzDNDWaK
 module.exports = {
   config: {
     name: "bing",
-    aliases: ["bing2"],
+    aliases: ["Bng"],
     version: "1.0.2",
     role: 0,
     usePrefix: true,
-    countDown: 1000,
+    cooldown: 600,
     shortDescription: {
       en: "dalle"
     },
@@ -43,13 +43,13 @@ module.exports = {
     const numberSearch = parseInt(keySearch.split("-").pop().trim()) || 4;
 
     try {
-      api.sendMessage("⏳ | TsantaBot et Bing sont en train d'imaginer votre textes...", event.threadID, event.messageID); // Added message here
+      api.sendMessage("⏳ | TsantaBot et Bing sont en train d'imaginer votre textes... \n\n 🆓️ Dispo chaque 10min\n 🚀 Bing2 : Dispo chaque 5secondes\n 🤖 Créez votre Chatbot ici: bit.ly/tsantabot", event.threadID, event.messageID); // Added message here
 
       const res = await axios.get(`https://api-dalle-gen.onrender.com/dalle3?auth_cookie_U=${_U}&auth_cookie_KievRPSSecAuth=${KievRPSSecAuth}&prompt=${encodeURIComponent(keySearchs)}`);
       const data = res.data.results.images;
 
       if (!data || data.length === 0) {
-        api.sendMessage("No images found for the provided query.", event.threadID, event.messageID);
+        api.sendMessage("Aucune images trouvées.. Essayer un autre", event.threadID, event.messageID);
         return;
       }
 
@@ -67,7 +67,7 @@ module.exports = {
       }, event.threadID, event.messageID);
     } catch (error) {
       console.error(error);
-      api.sendMessage("Oh no! Je suis malade...🥶 \n\n 💡Tuto: Bing + prompt\n ▪︎Ex: Bing Chicken cyborg", event.threadID, event.messageID);
+      api.sendMessage("Oh no! Je suis malade...🥶 \n\n 💡Tuto: Bing + prompt\n ▪︎Ex: Bing Chicken cyborg\n\n Raha hampiasa Bing pro sans limite dia soraty: Bing2", event.threadID, event.messageID);
     } finally {
       await fs.remove(path.join(__dirname, 'cache'));
     }
