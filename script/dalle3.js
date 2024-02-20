@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['dall3'],
     author: "kshitiz",
     version: "2.0",
-    cooldown: 120,
+    cooldown: 300,
     role: 0,
     shortDescription: {
       en: ""
