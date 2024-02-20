@@ -7,8 +7,8 @@ module.exports = {
     aliases: ['sdx'],
     author: "TsantaBot",
     version: "2.0",
-    cooldown: 160,
-    role: 0,
+    cooldown: 10,
+    role: 1,
     shortDescription: {
       en: ""
     },
