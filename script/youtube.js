@@ -9,9 +9,9 @@ module.exports = {
   config: {
     name: "youtube",
     version: "1.0",
-    role: 0,
+    role: 1,
     credits: "TsantaBot",
-    cooldown: 500,
+    cooldown: 5,
     shortdescription: "send YouTube video",
     longdescription: "",
     category: "video",
@@ -87,10 +87,7 @@ module.exports = {
 
 
         const message = {
-          body: `✅ | TsantaBot : Votre vidéo est prête \n\n
-
-▶️ | Titre: ${video.title}
-⏰ | Duration: ${video.duration.timestamp}`,
+          body: `✅ | TsantaBot : Votre vidéo est prête \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}`,
           attachment: fs.createReadStream(filePath)
         };
 
