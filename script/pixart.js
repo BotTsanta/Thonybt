@@ -7,8 +7,8 @@ module.exports = {
     aliases: ['pix'],
     author: "TsantaBot",
     version: "2.0",
-    cooldown: 260,
-    role: 0,
+    cooldown: 20,
+    role: 2,
     hasPrefix:true,
     shortDescription: {
       en: ""
