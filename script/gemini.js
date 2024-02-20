@@ -4,6 +4,7 @@ module.exports.config = {
   name: 'gemini',
   version: '1.0.0',
   credits: 'TsantaBot',
+  usePrefix: true,
   aliases: ['gem'],
   description: '𝗚𝗘𝗠𝗜𝗡𝗜 𝗂𝗌 𝖺𝗇 𝖠𝗋𝗍𝗂𝖿𝗂𝖺𝗅 𝖨𝗇𝗍𝖾𝗅𝗅𝗂𝗀𝖾𝗇𝖼𝖾 Pro',
   usage: '[ 𝖯𝗋𝗈𝗆𝗉𝗍 | 𝖰𝗎𝖾𝗋𝗒 ]',
