@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "dessin",
   version: "1.0.0",
-  role: 1,
+  role: 0,
   aliases: ["draw","dessiner"],
   hasPrefix: true,
   credits: "TsantaBot",
@@ -20,10 +20,10 @@ module.exports.run = async ({ api, event, args }) => {
   const time = new Date();
   const timestamp = time.toISOString().replace(/[:.]/g, "-");
   const path = __dirname + '/cache/' + `${timestamp}_tid.png`;
-  if (!query) return api.sendMessage("- Ex: dessin Cat cyborg  \n\n🆓️: Dispo chaque 3min \n🌐: bit.ly/tsantabot", threadID, messageID);
+  if (!query) return api.sendMessage("- Ex: dessin Dog \n\n🆓️: Dispo chaque 3min \n🌐: bit.ly/tsantabot", threadID, messageID);
     api.sendMessage(`⏳ | TsantaBot_dessin va dessiner 《${query}》`, event.threadID, event.messageID);
-  const poli = (await axios.get(`http://ger2-1.deploy.sbs:1792/emi?prompt=${query}`, {
-    responseType: "arraybuffer",
+  const poli = (await axios.get(`https://ai-tools.replit.app/emi?prompt=${query}`, {
+    responseType: "arraybuffer", 
   })).data;
   fs.writeFileSync(path, Buffer.from(poli, "utf-8"));
     setTimeout(function() {
