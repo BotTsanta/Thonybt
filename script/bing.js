@@ -14,12 +14,12 @@ module.exports = {
     usePrefix: true,
     cooldown: 600,
     shortDescription: {
-      en: "dalle"
+      en: "dalle3 sur Facebook"
     },
     longDescription: {
       en: ""
     },
-    category: "dalle3 pro",
+    category: "dalle3  pro",
     guide: {
       en: "{prefix}bing <search query> -<number of images>"
     }
