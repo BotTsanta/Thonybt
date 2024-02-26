@@ -1,16 +1,14 @@
-const {
-  Hercai
-} = require('hercai');
-const herc = new Hercai();
+const axios = require('axios');
 module.exports.config = {
-  name: 'Ai', //hercai
+  name: 'ai',
   version: '1.0.0',
   role: 0,
   hasPrefix: true,
-  description: "An AI command powered by TsantaBot",
-  usage: "Tsanta [question]",
-  credits: 'TsantaBot',
-  cooldown: 15,
+  aliases: ['openai2'],
+  description: "An AI command powered by GPT-4",
+  usage: "Ai [promot]",
+  credits: 'Developer',
+  cooldown: 10,
 };
 module.exports.run = async function({
   api,
@@ -19,17 +17,17 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage("▪︎Discutez avec Ai développé par TsantaBot.\n\n ▪︎Ex: Ai tu es là ? \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot", event.threadID, event.messageID);
+    api.sendMessage(`Simple Ai TsantaBot: \n ▪︎Ex: Ai Bonjoir\n\n * Isaky ny manontany dia asina "Ai" foana ny fiandohany\n\n🚀 Créez votre Chatbot sur bit.ly/tsantabot`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage("✍ | Ai est en train d'écrire...", event.threadID, event.messageID);
+  api.sendMessage(`🤔 En train de répondre... \n⏳\n\n 👉 Créez votre Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
   try {
-    const response = await herc.question({
-      model: "v3",
-      content: input
-    });
-    api.sendMessage(response.reply, event.threadID, event.messageID);
+    const {
+      data
+    } = await axios.get(`https://openaikey-x20f.onrender.com/api?prompt=${encodeURIComponent(input)}`);
+    const response = data.response;
+    api.sendMessage(response, event.threadID, event.messageID);
   } catch (error) {
-    api.sendMessage('Oh non! Je suis malade 🤧 Je vais chez le docteur et après on peut continuer 😍', event.threadID, event.messageID);
+    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
 };
