@@ -8,29 +8,29 @@ const _U = "1m-9JS15f0PkyPsdvClShIHkJz0RDekyHci3C3S9A2HIKwfZGmZ9Qmat4lbqDzDNDWaK
 module.exports = {
   config: {
     name: "bing2",
-    aliases: ["BingPro", "bing-pro"],
+    aliases: ["Bng2"],
     version: "1.0.2",
     role: 0,
     usePrefix: true,
-    cooldown: 60,
+    cooldown: 6,
     shortDescription: {
-      en: "dalle by bing"
+      en: "dalle3 sur Facebook"
     },
     longDescription: {
       en: ""
     },
-    category: "dalle3 pro",
+    category: "dalle3  pro",
     guide: {
-      en: "{prefix}bing2 <search query> -<number of images>"
+      en: "{prefix}bing <search query> -<number of images>"
     }
   },
 
   run: async function ({ api, event, args }) {
     const uid = event.senderID;
-    const permission = ["61552825191002"];
+    const permission = [`${uid}`];
     if (!permission.includes(event.senderID)) {
       api.sendMessage(
-        "Bing2 dia natao ho an'ireo izay nandoa ny sarany bing2 5000Ar ihany.\nBing2 disponible chaque 5 secondes\n\n Raha hampiasa Bing2 dia alefa amin'ny 0349310268 (Tsanta Fiderana) ny sarany 5000ar.\n Rehefa lasa dia milaza eto na @Admin m.me/61552825191002 Taifidtra sy afaka mampiasa eo noho eo. \n Raha hampiasa GRATUIT dia bing ampiasaina dispo chaque 10min ",
+        "You don't have enough permission to use this command. Only admin can do it.",
         event.threadID,
         event.messageID
       );
@@ -43,7 +43,7 @@ module.exports = {
     const numberSearch = parseInt(keySearch.split("-").pop().trim()) || 4;
 
     try {
-      api.sendMessage("⏳ | TsantaBot et Bing sont en train d'imaginer votre textes...", event.threadID, event.messageID); // Added message here
+      api.sendMessage("⏳ | TsantaBot et Bing sont en train d'imaginer votre textes... \n\n 🆓️ Dispo chaque 10min\n 🚀 Bing2 : Dispo chaque 5secondes\n 🤖 Créez votre Chatbot ici: bit.ly/tsantabot", event.threadID, event.messageID); // Added message here
 
       const res = await axios.get(`https://api-dalle-gen.onrender.com/dalle3?auth_cookie_U=${_U}&auth_cookie_KievRPSSecAuth=${KievRPSSecAuth}&prompt=${encodeURIComponent(keySearchs)}`);
       const data = res.data.results.images;
@@ -67,7 +67,7 @@ module.exports = {
       }, event.threadID, event.messageID);
     } catch (error) {
       console.error(error);
-      api.sendMessage("Oh no! Je suis malade...🥶 \n\n 💡Tuto: Bing2 + prompt\n ▪︎Ex: Bing2 Chicken cyborg", event.threadID, event.messageID);
+      api.sendMessage("Oh no! Je suis malade...🥶 \n\n 💡Tuto: Bing + prompt\n ▪︎Ex: Bing Chicken cyborg\n\n Raha hampiasa Bing pro sans limite dia soraty: Bing2", event.threadID, event.messageID);
     } finally {
       await fs.remove(path.join(__dirname, 'cache'));
     }
