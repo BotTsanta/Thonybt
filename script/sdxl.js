@@ -7,17 +7,17 @@ module.exports = {
     aliases: ['sdx'],
     author: "TsantaBot",
     version: "2.0",
-    cooldown: 10,
-    role: 1,
+    cooldown: 160,
+    role: 0,
     shortDescription: {
-      en: ""
+      en: "sdxl prompt 1~9"
     },
     longDescription: {
       en: "generate an image sdxl"
     },
     category: "image",
     guide: {
-      en: "[prompt - model]"
+      en: "sdxl [prompt - model]"
     }
   },
   run: async function ({ api, event, args }) {
@@ -26,7 +26,7 @@ module.exports = {
     let model = 1;
 
     if (args.length === 0) {
-      return api.sendMessage("▪︎ Code: sdxl [prompt] - [model] \n\n ■NB: Afaka soloina modèle 《1~9》 hafa ilay modèle io, Aucun résultat kosa raha tsy asina《-》 sy chiffre. \n\n ▪︎Ex: sdxl Dog cyborg - 2 \n\n🆓️ Dispo chaque 3min  \n\n TsantaBot: https://bit.ly/tsantabot", event.threadID, event.messageID);
+      return api.sendMessage("▪︎ Code: sdxl [prompt] - [model] \n\n ■NB: Afaka soloina modèle 《1~9》 hafa ilay modèle io, Aucun résultat kosa raha tsy asina《-》 sy chiffre. \n\n ▪︎Ex: sdxl Cute girl - 2 \n\n🆓️ Dispo chaque 3min  \n\n 🤖TsantaBot: https://bit.ly/tsantabot", event.threadID, event.messageID);
     }
 
     if (args.length > 1) {
@@ -41,10 +41,10 @@ module.exports = {
     let mid = event.messageID;
 
     try {
-      api.sendMessage("⏳ | TsantaBot_sdxl est en train d'imaginer votre texte... ", tid, mid);
+      api.sendMessage("⏳ | TsantaBot_sdxl est en train d'imaginer votre texte...", tid, mid);
 
       let enctxt = encodeURIComponent(prompt);
-      let url = `http://ger2-1.deploy.sbs:1792/sdxl?prompt=${enctxt}&styles=${model}`;
+      let url = `https://ai-tools.replit.app/sdxl?prompt=${enctxt}&styles=${model}`;
 
       let response = await axios.get(url, { responseType: "stream" });
 
