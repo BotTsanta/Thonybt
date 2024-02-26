@@ -1,60 +1,37 @@
-const fs = require("fs");
-const axios = require("axios");
+module.exports.config = {
+  name: "tsanta3D",
+  version: "1.0.0",
+  role: 0,
+  aliases: ["t3D","img3D"],
+  hasPrefix: true,
+  credits: "TsantaBot",
+  description: "generate image from emi 1/1min",
+  usages: "tsanta3D [promt]",
+  cooldown: 180,
+  
+};
 
-module.exports = {
-  config: {
-    name: "tsanta3D",
-    aliases: ['img3D'],
-    author: "TsantaBot",
-    version: "2.0",
-    cooldown: 160,
-    role: 0,
-    shortDescription: {
-      en: "tsanta3D prompt 1~9"
-    },
-    longDescription: {
-      en: "generate an image 3D"
-    },
-    category: "image",
-    guide: {
-      en: "tsanta3D [prompt - model]"
+module.exports.run = async ({ api, event, args }) => {
+  const axios = require('axios');
+  const fs = require('fs-extra');
+  try { 
+  const { threadID, messageID } = event;
+  const query = args.join(" ");
+  const time = new Date();
+  const timestamp = time.toISOString().replace(/[:.]/g, "-");
+  const path = __dirname + '/cache/' + `${timestamp}_tid.png`;
+  if (!query) return api.sendMessage("- Ex: tsanta3D Dog \n\n🆓️: Dispo chaque 3min \n🌐: bit.ly/tsantabot", threadID, messageID);
+    api.sendMessage(`⏳ | TsantaBot_3D va dessiner 《${query}》`, event.threadID, event.messageID);
+  const poli = (await axios.get(`https://ai-tools.replit.app/render?prompt=${query}`, {
+    responseType: "arraybuffer", 
+  })).data;
+  fs.writeFileSync(path, Buffer.from(poli, "utf-8"));
+    setTimeout(function() {
+  api.sendMessage({
+    body: "✅ Voici votre image 3D 🥰",
+    attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path));
+    }, 5000);
+    } catch (error) {
+      api.sendMessage(error.message, event.threadID, event.messageID);
     }
-  },
-  run: async function ({ api, event, args }) {
-    let path = __dirname + "/cache/image.png";
-    let prompt;
-    let model = 1;
-
-    if (args.length === 0) {
-      return api.sendMessage("▪︎ Code: tsanta3D [prompt] - [model] \n\n ■NB: Afaka soloina modèle 《1~9》 hafa ilay modèle io, Aucun résultat kosa raha tsy asina《-》 sy chiffre. \n\n ▪︎Ex: tsanta3D Cute girl - 2 \n\n🆓️ Dispo chaque 3min  \n\n 🤖TsantaBot: https://bit.ly/tsantabot", event.threadID, event.messageID);
-    }
-
-    if (args.length > 1) {
-      const tzt = args.join(" ").split("-").map(item => item.trim());
-      prompt = tzt[0];
-      model = tzt[1];
-    } else {
-      prompt = args[0];
-    }
-
-    let tid = event.threadID;
-    let mid = event.messageID;
-
-    try {
-      api.sendMessage("⏳ | TsantaBot_3D est en train d'imaginer votre texte...", tid, mid);
-
-      let enctxt = encodeURIComponent(prompt);
-      let url = `https://ai-tools.replit.app/sdxl?prompt=${enctxt}&styles=${model}`;
-
-      let response = await axios.get(url, { responseType: "stream" });
-
-      response.data.pipe(fs.createWriteStream(path));
-
-      response.data.on("end", () => {
-        api.sendMessage({ attachment: fs.createReadStream(path) }, tid, () => fs.unlinkSync(path), mid);
-      });
-    } catch (e) {
-      return api.sendMessage(e.message, tid, mid);
-    }
-  }
 };
