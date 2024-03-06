@@ -9,9 +9,9 @@ module.exports = {
   config: {
     name: "youtube",
     version: "1.0",
-    role: 1,
+    role: 0,
     credits: "TsantaBot",
-    cooldown: 5,
+    cooldown: 300,
     shortdescription: "send YouTube video",
     longdescription: "",
     category: "video",
@@ -33,7 +33,7 @@ module.exports = {
 
 
     if (data.length < 2) {
-      return api.sendMessage("💡Ex: YouTube Mr Said Veloma \n\n 🆓️ Dispo isaky ny 5 minutes\n 🌐 bit.ly/tsantabot ", event.threadID);
+      return api.sendMessage("💡Ex: YouTube Mr Said Veloma \n\n 🆓️ Dispo isaky ny 300s\n 🌐Créez votre Chatbot : bit.ly/tsantabot ", event.threadID);
     }
 
 
@@ -42,7 +42,7 @@ module.exports = {
 
 
     try {
-      api.sendMessage(`✅ | TsantaBot va chercher 《${videoName}》\n
+      api.sendMessage(`✅ | TsantaBot va chercher 《${videoName}》\n\n
 ⏳ | Attendez svp...`, event.threadID);
 
 
@@ -87,7 +87,7 @@ module.exports = {
 
 
         const message = {
-          body: `✅ | TsantaBot : Votre vidéo est prête \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}`,
+          body: `✅ | TsantaBot : vidéo Téléchargé \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}`,
           attachment: fs.createReadStream(filePath)
         };
 
