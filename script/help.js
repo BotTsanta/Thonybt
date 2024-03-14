@@ -17,7 +17,7 @@ async function helpFunction({ api, event, enableCommands, args, Utils, prefix })
     const eventCommands = enableCommands[1].handleEvent;
     const commands = enableCommands[0].commands;
     if (!input) {
-      const pages = 20;
+      const pages = 50;
       let page = 1;
       let start = (page - 1) * pages;
       let end = start + pages;
@@ -26,10 +26,7 @@ async function helpFunction({ api, event, enableCommands, args, Utils, prefix })
         helpMessage += `\t${i + 1}. ➤ ${prefix}${commands[i]} 
 `;
       }
-      helpMessage += `
-🌐 TsantaBot : https://bit.ly/tsantabot
-
-`;
+      helpMessage += ``;
       eventCommands.forEach((eventCommand, index) => {
         helpMessage += `\t${index + 1}. ➤ ${prefix}${eventCommand} 
 `;
@@ -53,7 +50,6 @@ async function helpFunction({ api, event, enableCommands, args, Utils, prefix })
 `;
       }
       helpMessage += `
-⏭ Pour voir la page suivante, tapez ${prefix}help [numéro de la page] \n- Ex: help 2 \n\n 
  💡 Pour voir à propos d'une commande spécifique, tapez '${prefix}help [nom du commande]' \n - Ex: help ai \n\n 
  🗂 Raha hijery ny fomba fampiasana ny commandes dia soratana mitokana fotsiny ilay commande.\n - Ex: Ai\n\n 🤖 Raha hanamboatra Chatbot gratuit/Pro dia: bit.ly/tsantabot 
 
@@ -113,7 +109,7 @@ async function handleEventFunction({ api, event, prefix }) {
     messageID,
     body
   } = event;
-  const message = prefix ? '▶️ Mon Prefix est: ' + prefix : " ▶️ Désolé, J'ai  pas un prefix. \n - Tapez: help \n 🌐 : bit.ly/tsantabot  ";
+  const message = prefix ? '▶️ Mon Prefix est: ' + prefix : " ▶️ Désolé, J'ai pas de prefix. \n - Tapez: help \n 🌐 : bit.ly/tsantabot  ";
   if (body?.toLowerCase().startsWith('prefix')) {
     api.sendMessage(message, threadID, messageID);
   }
