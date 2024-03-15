@@ -1,14 +1,12 @@
-const {
-  Hercai
-} = require('hercai');
-const herc = new Hercai();
+const axios = require('axios');
 module.exports.config = {
-  name: 'Google', //hercai
+  name: 'google',
   version: '1.0.0',
   role: 0,
-  hasPrefix: false,
-  description: "An AI command powered by TsantaBot",
-  usage: "coogle [question]",
+  hasPrefix: true,
+  aliases: ['openai2'],
+  description: "An AI command powered by GPT-4",
+  usage: "Ai [promot]",
   credits: 'TsantaBot',
   cooldown: 10,
 };
@@ -19,17 +17,17 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(` ▪︎Discutez avec Ai développé par Google \n\n ▪︎Ex: google Trouvez moi un exemple de CV`, event.threadID, event.messageID);
+    api.sendMessage(`Simple Ai by Google: \n ▪︎Ex: Google Faites moi un CV pour une poste Famme de ménage`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`🔎 | Google est en train d'écrire...`, event.threadID, event.messageID);
+  api.sendMessage(`🔎 En train de recherche...`, event.threadID, event.messageID);
   try {
-    const response = await herc.question({
-      model: "v3",
-      content: input
-    });
-    api.sendMessage(response.reply, event.threadID, event.messageID);
+    const {
+      data
+    } = await axios.get(`https://openaikey-x20f.onrender.com/api?prompt=${encodeURIComponent(input)}`);
+    const response = data.response;
+    api.sendMessage(response, event.threadID, event.messageID);
   } catch (error) {
-    api.sendMessage('Oh non! Je suis malade 🤧 Je vais chez le docteur bit.ly/tsantabot et après on peut continuer 😍', event.threadID, event.messageID);
+    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
   }
 };
