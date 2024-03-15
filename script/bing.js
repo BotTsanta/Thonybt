@@ -43,7 +43,7 @@ module.exports = {
     const numberSearch = parseInt(keySearch.split("-").pop().trim()) || 4;
 
     try {
-      api.sendMessage("⏳ | TsantaBot et Bing sont en train d'imaginer votre textes... \n\n 🆓️ Dispo chaque 10min\n 🚀 Bing2 : Dispo chaque 5secondes\n 🤖 Créez votre Chatbot ici: bit.ly/tsantabot", event.threadID, event.messageID); // Added message here
+      api.sendMessage("⏳ | Bing est en train d'imaginer votre textes... \n\n 🆓️ Dispo chaque 10min\n 🚀 Bing2 : Dispo chaque 5secondes", event.threadID, event.messageID); // Added message here
 
       const res = await axios.get(`https://api-dalle-gen.onrender.com/dalle3?auth_cookie_U=${_U}&auth_cookie_KievRPSSecAuth=${KievRPSSecAuth}&prompt=${encodeURIComponent(keySearchs)}`);
       const data = res.data.results.images;
