@@ -1,28 +1,28 @@
 const axios = require("axios");
-let fontEnabled = true;
+let fontEnabled = false;
 
 module.exports.config = {
-  name: "koto",
+  name: "koto2",
   version: "6.2",
   role: 1,
   usePrefix: false,
   credits: "Hazeyy",
-  description: "( koto 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
+  description: "( koto2 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
   commandCategory: "𝚗𝚘 𝚙𝚛𝚎𝚏𝚒𝚡",
-  usage: "( koto [question] ou [image] )",
+  usage: "( koto2 [question] ou [image] )",
   cooldown: 5,
 };
 
 async function convertImageToCaption(imageURL, api, event, inputText) {
   try {
-    api.sendMessage("🕟 | koto 𝙰𝙸 𝚁𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚒𝚗𝚐 𝙸𝚖𝚊𝚐𝚎, 𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝...", event.threadID, event.messageID);
+    api.sendMessage("🕟 | koto2 𝙰𝙸 𝚁𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚒𝚗𝚐 𝙸𝚖𝚊𝚐𝚎, 𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝...", event.threadID, event.messageID);
 
     const response = await axios.get(`https://hazee-gemini-pro-vision-12174af6c652.herokuapp.com/gemini-vision?text=${encodeURIComponent(inputText)}&image_url=${encodeURIComponent(imageURL)}`);
     const caption = response.data.response;
 
     if (caption) {
       const formattedCaption = formatFont(caption);
-      api.sendMessage(`🎓 Koto 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n▪︎ Question: '${inputText}'\n\n${formattedCaption}`, event.threadID, event.messageID);
+      api.sendMessage(`🎓 Koto2 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n▪︎ Question: '${inputText}'\n\n${formattedCaption}`, event.threadID, event.messageID);
     } else {
       api.sendMessage("🤖 𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚛𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚎𝚍 𝚝𝚑𝚎 𝚒𝚖𝚊𝚐𝚎𝚜.", event.threadID, event.messageID);
     }
@@ -68,7 +68,7 @@ module.exports.handleEvent = async function ({ api, event }) {
     return;
   }
 
-  api.sendMessage("✍ | Koto en train de répondre...", event.threadID, event.messageID);
+  api.sendMessage("✍ | Koto2 en train de répondre...", event.threadID, event.messageID);
 
   try {
     const response = await axios.get(`https://hazee-gemini-pro-vision-12174af6c652.herokuapp.com/gemini-vision?text=${encodeURIComponent(inputText)}`);
