@@ -2,27 +2,27 @@ const axios = require("axios");
 let fontEnabled = false;
 
 module.exports.config = {
-  name: "koto2",
+  name: "mayra",
   version: "6.2",
   role: 1,
   usePrefix: false,
   credits: "Hazeyy",
-  description: "( koto2 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
+  description: "( mayra 𝙿𝚛𝚘 𝚅𝚒𝚜𝚒𝚘𝚗 )",
   commandCategory: "𝚗𝚘 𝚙𝚛𝚎𝚏𝚒𝚡",
-  usage: "( koto2 [question] ou [image] )",
+  usage: "( Mayra [question] ou [image] )",
   cooldown: 5,
 };
 
 async function convertImageToCaption(imageURL, api, event, inputText) {
   try {
-    api.sendMessage("🕟 | koto2 𝙰𝙸 𝚁𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚒𝚗𝚐 𝙸𝚖𝚊𝚐𝚎, 𝚙𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝...", event.threadID, event.messageID);
+    api.sendMessage("🕟 | Mayra 𝙰𝙸 en train de répondre...", event.threadID, event.messageID);
 
     const response = await axios.get(`https://hazee-gemini-pro-vision-12174af6c652.herokuapp.com/gemini-vision?text=${encodeURIComponent(inputText)}&image_url=${encodeURIComponent(imageURL)}`);
     const caption = response.data.response;
 
     if (caption) {
       const formattedCaption = formatFont(caption);
-      api.sendMessage(`🎓 Koto2 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n▪︎ Question: '${inputText}'\n\n${formattedCaption}`, event.threadID, event.messageID);
+      api.sendMessage(`🎓 Mayra Ai Pro\n\n▪︎ Question: '${inputText}'\n\n▪︎${formattedCaption}`, event.threadID, event.messageID);
     } else {
       api.sendMessage("🤖 𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚛𝚎𝚌𝚘𝚐𝚗𝚒𝚣𝚎𝚍 𝚝𝚑𝚎 𝚒𝚖𝚊𝚐𝚎𝚜.", event.threadID, event.messageID);
     }
@@ -33,7 +33,7 @@ async function convertImageToCaption(imageURL, api, event, inputText) {
 }
 
 module.exports.handleEvent = async function ({ api, event }) {
-  if (!(event.body.toLowerCase().startsWith("gemini"))) return;
+  if (!(event.body.toLowerCase().startsWith("mayra"))) return;
 
   const args = event.body.split(/\s+/);
   args.shift();
@@ -53,22 +53,22 @@ module.exports.handleEvent = async function ({ api, event }) {
   const inputText = args.join(' ');
 
   if (!inputText) {
-    return api.sendMessage("1- 🇲🇬 Koto Salut, Comment draguer une fille. \n\n 2- ↪ (répondez un image puis posez une question à propos.. \n Koto qui es sur cette photo.)", event.threadID, event.messageID);
+    return api.sendMessage("1- 🇲🇬 Mayra Salut, Comment draguer une fille. \n\n 2- ↪ (répondez un image puis posez une question à propos.. \n Koto qui es sur cette photo.)", event.threadID, event.messageID);
   }
 
   if (args[0] === "on") {
     fontEnabled = true;
-    api.sendMessage({ body: "🎓 Koto 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n» 🟢 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙴𝚗𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
+    api.sendMessage({ body: "🎓 Mayra \n\n» 🟢 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙴𝚗𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
     return;
   }
 
   if (args[0] === "off") {
     fontEnabled = false;
-    api.sendMessage({ body: "🎓 koto 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n» 🔴 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
+    api.sendMessage({ body: "🎓 Mayra 𝐏-𝐕𝐢𝐬𝐢𝐨𝐧 ( 𝐀𝐈 )\n\n» 🔴 𝙵𝚘𝚗𝚝 𝙵𝚘𝚛𝚖𝚊𝚝𝚝𝚒𝚗𝚐 𝚒𝚜 𝚗𝚘𝚠 𝙳𝚒𝚜𝚊𝚋𝚕𝚎𝚍 «" }, event.threadID, event.messageID);
     return;
   }
 
-  api.sendMessage("✍ | Koto2 en train de répondre...", event.threadID, event.messageID);
+  api.sendMessage("✍ | Mayra en train de répondre...", event.threadID, event.messageID);
 
   try {
     const response = await axios.get(`https://hazee-gemini-pro-vision-12174af6c652.herokuapp.com/gemini-vision?text=${encodeURIComponent(inputText)}`);
