@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "koto",
+    name: "gpt4",
     version: "1.0.0",
     role: 1,
     credits: "KENLIEPLAYS",
@@ -7,7 +7,7 @@ module.exports.config = {
     description: "AI gpt + CONVERSATIONS CONTINUES",
     commandCategory: "ai",
     usages: "[ask]",
-    cooldown: 22,
+    cooldown: 10,
 };
 
 module.exports.run = async function({ api, event, args }) {
