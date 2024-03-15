@@ -33,7 +33,7 @@ module.exports = {
 
 
     if (data.length < 2) {
-      return api.sendMessage("💡Ex: YouTube Mr Said Veloma \n\n 🆓️ Dispo isaky ny 300s\n 🌐Créez votre Chatbot : bit.ly/tsantabot ", event.threadID);
+      return api.sendMessage("💡Ex: YouTube Mr Said Veloma \n\n 🆓️ Dispo isaky ny 300s", event.threadID);
     }
 
 
@@ -42,7 +42,7 @@ module.exports = {
 
 
     try {
-      api.sendMessage(`✅ | TsantaBot va chercher 《${videoName}》\n\n
+      api.sendMessage(`✅ | Je vais chercher 《${videoName}》\n\n
 ⏳ | Attendez svp...`, event.threadID);
 
 
@@ -87,7 +87,7 @@ module.exports = {
 
 
         const message = {
-          body: `✅ | TsantaBot : vidéo Téléchargé \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}`,
+          body: `✅ | vidéo Téléchargé \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}\n bit.ly/tsantabot `,
           attachment: fs.createReadStream(filePath)
         };
 
