@@ -5,19 +5,19 @@ module.exports = {
   config: {
     name: "sdxl",
     aliases: ['sdx'],
-    author: "TsantaBot",
+    author: "kshitiz",
     version: "2.0",
-    cooldown: 160,
+    cooldown: 300,
     role: 0,
     shortDescription: {
-      en: "sdxl prompt 1~9"
+      en: ""
     },
     longDescription: {
-      en: "generate an image sdxl"
+      en: "generate an image"
     },
     category: "image",
     guide: {
-      en: "sdxl [prompt - model]"
+      en: "[prompt | model]"
     }
   },
   run: async function ({ api, event, args }) {
@@ -26,11 +26,11 @@ module.exports = {
     let model = 1;
 
     if (args.length === 0) {
-      return api.sendMessage("▪︎ Code: sdxl [prompt] - [model] \n\n ■NB: Afaka soloina modèle 《1~9》 hafa ilay modèle io, Aucun résultat kosa raha tsy asina《-》 sy chiffre. \n\n ▪︎Ex: sdxl Cute girl - 2 \n\n🆓️ Dispo chaque 3min  \n\n 🤖TsantaBot: https://bit.ly/tsantabot", event.threadID, event.messageID);
+      return api.sendMessage("▪︎Code: sdxl [prompt] | [model (1~9)] \n\n ▪︎Ex: sdxl Cute girl | 2", event.threadID, event.messageID);
     }
 
     if (args.length > 1) {
-      const tzt = args.join(" ").split("-").map(item => item.trim());
+      const tzt = args.join(" ").split("|").map(item => item.trim());
       prompt = tzt[0];
       model = tzt[1];
     } else {
@@ -41,10 +41,10 @@ module.exports = {
     let mid = event.messageID;
 
     try {
-      api.sendMessage("⏳ | TsantaBot_sdxl est en train d'imaginer votre texte...", tid, mid);
+      api.sendMessage("⏰ | sdxl est en train d'imaginer votre texte... ", tid, mid);
 
       let enctxt = encodeURIComponent(prompt);
-      let url = `https://ai-tools.replit.app/sdxl?prompt=${enctxt}&styles=${model}`;
+      let url = `https://www.api.vyturex.com/sdxl?prompt=${enctxt}&model=${model}`;
 
       let response = await axios.get(url, { responseType: "stream" });
 
