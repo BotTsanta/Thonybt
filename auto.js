@@ -180,7 +180,7 @@ app.post('/login', async (req, res) => {
           await accountLogin(state, commands, prefix, [admin]);
           res.status(200).json({
             success: true,
-            message: '✅ Votre compte Facebook est connecté sur TsantaBot avec succès.\n\n Maintenant, Veuillez essayer et envoyer un message "prefix" à votre compte Facebook Chatbot'
+            message: '😍 Votre compte Facebook est connecté sur TsantaBot avec succès.\n\n Maintenant, Veuillez essayer et envoyer un message "prefix" à votre compte Facebook Chatbot'
           });
         } catch (error) {
           console.error(error);
@@ -307,16 +307,16 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
               });
             } else {
               const active = Math.ceil((sender.timestamp + delay * 1000 - now) / 1000);
-              api.sendMessage(`⏳ | Attendez ${active} secondes avant d'utiliser la commande "${name}" \n\n bit.ly/tsantabot `, event.threadID, event.messageID);
+              api.sendMessage(`⏳ | Attendez ${active} secondes avant d'utiliser la commande "${name}" `, event.threadID, event.messageID);
               return;
             }
           }
           if (event.body && !command && event.body?.toLowerCase().startsWith(prefix.toLowerCase())) {
-            api.sendMessage(`Commande invalide, veuillez utiliser ${prefix}help pour voir la liste des commandes disponibles.\n bit.ly/tsantabot `, event.threadID, event.messageID);
+            api.sendMessage(`Commande invalide, veuillez utiliser ${prefix}help pour voir la liste des commandes disponibles `, event.threadID, event.messageID);
             return;
           }
           if (event.body && command && prefix && event.body?.toLowerCase().startsWith(prefix.toLowerCase()) && !aliases(command)?.name) {
-            api.sendMessage(`Commande invalide, veuillez utiliser ${prefix}help pour voir la liste des commandes disponibles. \n bit.ly/tsantabot `, event.threadID, event.messageID);
+            api.sendMessage(`Commande invalide, veuillez utiliser ${prefix}help pour voir la liste des commandes disponibles.`, event.threadID, event.messageID);
             return;
           }
           for (const {
