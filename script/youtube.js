@@ -42,7 +42,7 @@ module.exports = {
 
 
     try {
-      api.sendMessage(`✅ | Je vais chercher 《${videoName}》\n\n
+      api.sendMessage(`✅ | je vais chercher 《${videoName}》\n\n
 ⏳ | Attendez svp...`, event.threadID);
 
 
@@ -87,7 +87,7 @@ module.exports = {
 
 
         const message = {
-          body: `✅ | vidéo Téléchargé \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}\n bit.ly/tsantabot `,
+          body: `✅ | TsantaBot : vidéo Téléchargé \n\n▶️ | Titre: ${video.title} \n⏰ | Duration: ${video.duration.timestamp}`,
           attachment: fs.createReadStream(filePath)
         };
 
