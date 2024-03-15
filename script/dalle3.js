@@ -26,7 +26,7 @@ module.exports = {
     let model = 1;
 
     if (args.length === 0) {
-      return api.sendMessage("▪︎Code: dalle3 [prompt] | [model (1~9)] \n\n ▪︎Ex: dalle3 Cat cyborg | 2 \n\n________________\n🆓️ : Dispo chaque 3min \n 🌐 : https://bit.ly/tsantabot", event.threadID, event.messageID);
+      return api.sendMessage("▪︎Code: dalle3 [prompt] | [model (1~9)] \n\n ▪︎Ex: dalle3 Cat cyborg | 2 \n\n________________\n🆓️ : Dispo chaque 3min", event.threadID, event.messageID);
     }
 
     if (args.length > 1) {
@@ -41,7 +41,7 @@ module.exports = {
     let mid = event.messageID;
 
     try {
-      api.sendMessage("⏰ | TsantaBot est en train d'imaginer votre texte... ", tid, mid);
+      api.sendMessage("⏰ | Dalle3 est en train d'imaginer votre texte... ", tid, mid);
 
       let enctxt = encodeURIComponent(prompt);
       let url = `https://www.api.vyturex.com/sdxl?prompt=${enctxt}&model=${model}`;
