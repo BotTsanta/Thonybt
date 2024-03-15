@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "tsanta",
+    name: "Mayra",
     version: "1.0.0",
     role: 0,
     credits: "KENLIEPLAYS",
@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event, args }) {
     let tid = threadID,
         mid = messageID;
     const content = encodeURIComponent(args.join(" "));
-    if (!args[0]) return api.sendMessage("▪︎Ex: Tsanta Tu es là?\n\n▪︎Créez  votre Chatbot sur bit.ly/tsantabot", tid, mid);
+    if (!args[0]) return api.sendMessage("▪︎Ex: Mayra Tu es là?", tid, mid);
     try {
         // Set ⏳ reaction before making the API call
         api.setMessageReaction("⏳", mid, (err) => {}, true);
