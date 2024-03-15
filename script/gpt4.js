@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "gpt4",
+    name: "koto",
     version: "1.0.0",
     role: 1,
     credits: "KENLIEPLAYS",
@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event, args }) {
     let tid = threadID,
     mid = messageID;
     const content = encodeURIComponent(args.join(" "));
-    if (!args[0]) return api.sendMessage("▪︎Ex: gpt4 Tu es là?\n\n 🤖: bit.ly/tsantabot", tid, mid);
+    if (!args[0]) return api.sendMessage("▪︎Ex: gpt4 Tu es là?", tid, mid);
     try {
         const res = await axios.get(`https://ai-tools.replit.app/gpt?prompt=${content}&uid=${encodeURIComponent(userId)}`);
         const respond = res.data.gpt4;
