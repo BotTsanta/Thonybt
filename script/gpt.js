@@ -19,7 +19,7 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(` ▪︎Discutez avec Ai développé par TsantaBot. \n\n ▪︎Ex: gpt tu es là ? \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
+    api.sendMessage(` ▪︎Discutez avec Ai développé par TsantaBot. \n\n ▪︎Ex: gpt tu es là ? `, event.threadID, event.messageID);
     return;
   }
   api.sendMessage(`✍ | gpt est en train d'écrire...`, event.threadID, event.messageID);
