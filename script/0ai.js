@@ -7,7 +7,7 @@ module.exports.config = {
   aliases: ['openai2'],
   description: "An AI command powered by GPT-4",
   usage: "Ai [promot]",
-  credits: 'Developer',
+  credits: 'TsantaBot',
   cooldown: 10,
 };
 module.exports.run = async function({
@@ -17,7 +17,7 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(`Simple Ai TsantaBot: \n ▪︎Ex: Ai Bonjour Tu es là ?\n\n * Isaky ny manontany dia asina "Ai" foana ny fiandohany\n\n🚀 Créez votre Chatbot sur bit.ly/tsantabot`, event.threadID, event.messageID);
+    api.sendMessage(`Simple Ai TsantaBot: \n ▪︎Ex: Ai Bonjour Tu es là ?\n\n * Isaky ny manontany dia asina "Ai" foana ny fiandohany`, event.threadID, event.messageID);
     return;
   }
   api.sendMessage(`✍ En train de répondre...`, event.threadID, event.messageID);
