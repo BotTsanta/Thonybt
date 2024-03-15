@@ -24,7 +24,7 @@ module.exports.run = async function({
     return;
   }
   try {
-    api.sendMessage(`🔎| Je cherche 《${musicName}》 `, event.threadID, event.messageID);
+    api.sendMessage(`🔎| je cherche 《${musicName}》 `, event.threadID, event.messageID);
     const searchResults = await yts(musicName);
     if (!searchResults.videos.length) {
       return api.sendMessage("Aucun résultat.", event.threadID, event.messageID);
