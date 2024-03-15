@@ -4,7 +4,7 @@ module.exports.config = {
   version: '1.0',
   credits: 'TsantaBot',
   countDown: 5,
-  role: 0,
+  role: 1,
   shortDescription: {
     en: 'Send anonymous message to user'
   },
@@ -20,7 +20,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event, args }) {
   if (args.length < 2) {
     return api.sendMessage(
-      '▪︎ Envoyer un message anonyme vers un utilisateur ID. \n ▪︎ Usage: mp [ID_Utilisateur] [message] \n ▪︎ Ex: mp 012345678901234 Salut Fara !',
+      'AJOUTER UN UTILISATEUR \n▪︎ Envoyer un message anonyme vers un utilisateur ID. \n ▪︎ Usage: mp [ID_Utilisateur] [message] \n ▪︎ Ex: mp 012345678901234 Salut Fara !',
       event.threadID,
       event.messageID
     );
