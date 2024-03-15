@@ -14,7 +14,7 @@ module.exports.config = {
 module.exports.run = async ({ api, event, args }) => {
   const query = args.join(" ");
   if (!query) {
-    api.sendMessage("ℹ️ Gemini Ai peut répondre à votre question.  \n\n ▪︎ Usage: Gemini + Questions \n▪︎Ex: Gemini Bonjour, tu es là ?\n\n ▪︎ bit.ly/tsantabot ", event.messageID, event.threadID);
+    api.sendMessage("ℹ️ Gemini Ai peut répondre à votre question.  \n\n ▪︎ Usage: Gemini + Questions \n▪︎Ex: Gemini Bonjour, tu es là ?", event.messageID, event.threadID);
     return;
   }
 
