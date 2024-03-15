@@ -20,11 +20,11 @@ module.exports.run = async function({
   const yts = require("yt-search");
   const musicName = args.join(' ');
   if (!musicName) {
-    api.sendMessage(`▪︎Ex: Music Mr Said Veloma\n\n ▪︎Créez Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
+    api.sendMessage(`▪︎Ex: Music Mr Said Veloma `, event.threadID, event.messageID);
     return;
   }
   try {
-    api.sendMessage(`🔎| TsantaBot cherche 《${musicName}》 `, event.threadID, event.messageID);
+    api.sendMessage(`🔎| Je cherche 《${musicName}》 `, event.threadID, event.messageID);
     const searchResults = await yts(musicName);
     if (!searchResults.videos.length) {
       return api.sendMessage("Aucun résultat.", event.threadID, event.messageID);
