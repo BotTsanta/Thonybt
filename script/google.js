@@ -10,7 +10,7 @@ module.exports.config = {
   description: "An AI command powered by TsantaBot",
   usage: "coogle [question]",
   credits: 'TsantaBot',
-  cooldown: 15,
+  cooldown: 10,
 };
 module.exports.run = async function({
   api,
@@ -19,10 +19,10 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(` ▪︎Discutez avec Ai développé par Google \n\n ▪︎Ex: google Trouvez moi un exemple de CV \n\n🤖 Créez votre Chatbot sur bit.ly/tsantabot `, event.threadID, event.messageID);
+    api.sendMessage(` ▪︎Discutez avec Ai développé par Google \n\n ▪︎Ex: google Trouvez moi un exemple de CV`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`✍ | Google est en train d'écrire...`, event.threadID, event.messageID);
+  api.sendMessage(`🔎 | Google est en train d'écrire...`, event.threadID, event.messageID);
   try {
     const response = await herc.question({
       model: "v3",
